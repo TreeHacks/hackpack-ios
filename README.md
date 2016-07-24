@@ -350,5 +350,5 @@ If you want to work on the app a little more, here are some ideas on how to exte
 * random joke?
 * etc. etc.
 
-
-
+### License
+MIT
