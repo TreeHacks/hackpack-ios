@@ -21,8 +21,7 @@ The first thing we’re going to do is add the necessary elements to display a G
 ![](https://quip.com/blob/KWDAAAiFNtr/ROCAUJg5SuOMkSmGZwrzkw?a=DHWs4izNozAoAq9LpeNxcqasLK6qiMaCpVHsrhkCaNEa)Make sure the following options are selected and then press finish.
 ![](https://quip.com/blob/KWDAAAiFNtr/IUx6lD0rWwn2elTftBK_sA?a=Talznxqd7wZA9a0xmqSBokraC1RI9a4IkWZ5VhW1tvca)Next, open Main.storyboard. Think of Main.storyboard as a rough mockup of what your app will look like. You can position different UI elements, preview colors/fonts, and connect screens together.
 
-Click on ViewController to select it, and choose “iPhone 4.7-inch” as your size.
-![](https://quip.com/blob/KWDAAAiFNtr/cWSTIVt9ernEE0P1eGI2EA?a=2x94vtqTfIwZArKS3THFOJIByPaNqCDDOZ480iGcWloa)Next, go to the top and click Editor → Embed In → Navigation Controller. This will put the main view controller into a navigation controller, which will then give us the ability to title our screen.
+Next, go to the top and click Editor → Embed In → Navigation Controller. This will put the main view controller into a navigation controller, which will then give us the ability to title our screen.
 
 After that, click on the circle icon on the bottom right hand side, scroll until you find “Image View” and then drag an image view onto View Controller.
 ![](https://quip.com/blob/KWDAAAiFNtr/nqO07RUzWofCsnCaRRJXvQ?a=BsQMCZy8OGDdhIRDPEIXyYsdaz2l4vf4r78Phugemuga)Position it however you want somewhere at the top. Click on it again to change the width/height. Next, click on the attributes panel on the right hand side and change the Mode to be “Scale to Fill.”
@@ -42,45 +41,45 @@ Before getting to the actual code, switch back to the original view from the top
 In `viewDidLoad()`, add the following code after super.viewDidLoad() and change the placeholder text:
 
 ```
-// This sets up the navigation controller (the bar at the top) to be a certain style, color, and tint.
-
-let name = "ENTER NAME HERE"
-self.title = "Good morning, \(name)"
-self.navigationController!.navigationBar.barTintColor = UIColor(red: 42/255, green: 62/255, blue: 80/255, alpha: 1)
-self.navigationController!.navigationBar.barStyle = .BlackTranslucent
-self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-
-// Calling the setupGIF function
-setupGIF()
+  // This sets up the navigation controller (the bar at the top) to be a certain style, color, and tint.
+  
+  let name = "ENTER NAME HERE"
+  self.title = "Good morning, \(name)"
+  self.navigationController!.navigationBar.barTintColor = UIColor(red: 42/255, green: 62/255, blue: 80/255, alpha: 1)
+  self.navigationController!.navigationBar.barStyle = .blackTranslucent
+  self.navigationController!.navigationBar.tintColor = UIColor.white
+  
+  // Calling the setupGIF function
+  setupGIF()
 ```
 
 Underneath that add the following code: 
 
 ```
 func setupGIF() {
-    /* gifString is the query we're going to be searching with using the Giphy.com API. 
-    Before we do that, we escape the string properly. Then, we put everything together 
+    /* gifString is the query we're going to be searching with using the Giphy.com API.
+    Before we do that, we escape the string properly. Then, we put everything together
     in a completed searchURL and get the contents from the link */
     
     let gifString = "dj khaled"
-    let encodedString = gifString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-    let searchURL = NSURL(string:"http://api.giphy.com/v1/gifs/translate?s=\(encodedString)&api_key=dc6zaTOxFJmzC")
-    let searchData = NSData(contentsOfURL:searchURL!)
+    let encodedString = gifString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+    let searchURL = URL(string:"http://api.giphy.com/v1/gifs/translate?s=\(encodedString)&api_key=dc6zaTOxFJmzC")
+    let searchData = try? Data(contentsOf: searchURL!)
     
     /* The next thing we have to do is parse the JSON that is returned from the URL.
     This involves accessing multiple dictionaries until we reach the gif link we're after. */
-  
+    
     do {
-        if let jsonResult = try NSJSONSerialization.JSONObjectWithData(searchData!, options: []) as? NSDictionary {
+        if let jsonResult = try JSONSerialization.jsonObject(with: searchData!, options: []) as? NSDictionary {
             if let items = jsonResult["data"] as? NSDictionary {
                 if let images = items["images"] as? NSDictionary {
                     if let gType = images["downsized"] as? NSDictionary {
                         if let link = gType["url"] as? String {
-                        
-                        /* After we have the link, the only that's left to do is display it with the help of
+                            
+                            /* After we have the link, the only that's left to do is display it with the help of
                             the UIImage+Gif.swift framework we added */
-                        
-                            let imageData = NSData(contentsOfURL: NSURL(string: link)!)
+                            
+                            let imageData = try? Data(contentsOf: URL(string: link)!)
                             let gif = UIImage.gifWithData(imageData!)
                             self.imageView.image = gif;
                         }
@@ -100,7 +99,7 @@ Make sure in your project page (accessible from the left hand panel) the followi
 
 ![](https://quip.com/blob/KWDAAAiFNtr/nQwM9CXLd4t_aCUL5wcUTQ?a=7j2nwe57xP9G73qBZFFyuEC35VK78vbMXaqX6U8GBtMa)
 
-After that, choose to run the application on an iPhone 6 (since that's how we setup the storyboard) and then press the run button (looks like a play button):
+After that, choose to run the application on an iPhone 7 (since that's how we setup the storyboard) and then press the run button (looks like a play button):
 ![](https://quip.com/blob/KWDAAAiFNtr/yBze2-IplmAu4H5--smwxw?a=UaSBEA3Ogj9gJ3bHurkRKEwlKSwfbo1VZ4p5UGDWKpQa)
 If everything worked, you should see a random DJ Khaled related GIF show up in the simulator as so:
 
@@ -125,55 +124,28 @@ Next, add `setupQuote()`  and `setupWeather()` in `viewDidLoad()` and add the fo
 func setupQuote() {
     /* This is a slightly different way to make HTTP requests but the fundamentals are the same.
     We're using Apple's NSURLSession framework to get the data returned from http://quotes.rest/qod.json */
-
-    let url = NSURL(string: "http://quotes.rest/qod.json")
-    let session = NSURLSession.sharedSession()
-    let task = session.dataTaskWithURL(url!, completionHandler: {(data, reponse, error) in
+    
+    let url = URL(string: "http://quotes.rest/qod.json")
+    let session = URLSession.shared
+    let task = session.dataTask(with: url!, completionHandler: {(data, reponse, error) in
         do {
-        
+            
             /* Again, this is where we start parsing the JSON until we reach the data we're after */
             
-            if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
+            if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
                 if let items = jsonResult["contents"] as? NSDictionary {
                     if let quoteData = items["quotes"] as? NSArray {
                         if let firstQuote = quoteData[0] as? NSDictionary {
-                        
+                            
                             /* Once we reach the quote, all we have to do is display the text */
                             
                             let quoteText = firstQuote["quote"] as! String
                             let quoteAuthor = firstQuote["author"] as! String
-                            dispatch_async(dispatch_get_main_queue(), {
+                            DispatchQueue.main.async(execute: {
                                 self.quoteTextView.text = "💭 Quote of the Day 💭\n\n\(quoteText)\n\n- \(quoteAuthor)"
                             });
                         }
                     }
-                }
-            }
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-    })
-    
-    task.resume()
-}
-
-func setupWeather() {
-    /* This is location to query the weather for. Feel free to change it to anything you'd like. */
-    
-    let location = "Stanford"
-    let url = NSURL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(location),us%20&units=imperial&APPID=2f6eb7ed8c5576e5d51fe15b51cdea10")
-    let session = NSURLSession.sharedSession()
-    let task = session.dataTaskWithURL(url!, completionHandler: {(data, reponse, error) in
-        do {
-            if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                if let items = jsonResult["main"] as? NSDictionary {
-                    let tempMin = items["temp_min"] as! NSNumber
-                    let tempMax = items["temp_max"] as! NSNumber
-                    let humidity = items["humidity"] as! NSNumber
-
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.weatherTextView.text = "🌎 Today's Weather Forecast for \(location) 🌎\n\nHigh: \(tempMax)°F\nLow: \(tempMin)°F\nHumidity: \(humidity)%"
-                    });
                 }
             }
         } catch let error as NSError {
@@ -199,8 +171,7 @@ In `Main.storyboard`, drag in a Button from the bottom right and place it somewh
 
 ![](https://quip.com/blob/KWDAAAiFNtr/A3ftucZtd4hiv5Qsoomv0g?a=FZmdryWaQCfkRlzrF2FMQRquZrzjhPGjpuvs7G1rM0Ya)
 Next, drag in a ViewController and place it next our original one like so:
-![](https://quip.com/blob/KWDAAAiFNtr/NL9aAw23Y17aeqm0G3QD8w?a=GiiicuM0KuIGxgS9ovoMHJokJUapFrzpDksmWxCeB0oa)Again, you're going to want to change the size to be iPhone 6 if it's not already:
-![](https://quip.com/blob/KWDAAAiFNtr/cWSTIVt9ernEE0P1eGI2EA?a=2x94vtqTfIwZArKS3THFOJIByPaNqCDDOZ480iGcWloa)
+![](https://quip.com/blob/KWDAAAiFNtr/NL9aAw23Y17aeqm0G3QD8w?a=GiiicuM0KuIGxgS9ovoMHJokJUapFrzpDksmWxCeB0oa)
 Next, hold control, click on your button, and drag the connector to your new view controller. When a gray prompt comes up, select “push.” You should see a connection between your two screens now. 
 ![](https://quip.com/blob/KWDAAAiFNtr/YRBplfPPVK8BiaPZF3mAkA?a=3KnxIdFJ32SaubZ2ByNCg7lalBgZBKaPSkA5Er9MWdsa)
 This connects the button and the next screen together. When the button is tapped, it with “push” the next view controller onto your screen.
@@ -247,92 +218,95 @@ Add helper methods in `viewDidLoad()`
 And finally add the following code blocks to make everything work:  
 
 ```
-    func setupCountdown() {
-        /* This sets up the format the date should be in */
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        /* This initializes the two dates we want to find the time difference between */
-        
-        let targetDate: NSDate? = dateFormatter.dateFromString("2016-06-20")
-        let todayDate: NSDate? = NSDate()
-      
-        /* After we have the difference between the two dates, we can display it with our label */
-        
-        let calendar = NSCalendar.init(calendarIdentifier: NSCalendarIdentifierGregorian);
-        let components = calendar?.components(.Day, fromDate:todayDate!, toDate:targetDate!, options: []) 
-        let dateString = NSDateFormatter.localizedStringFromDate(targetDate!, dateStyle: .ShortStyle, timeStyle: .ShortStyle); //format date correctly
-        self.countdownLabel.text = "📅 Days until \(dateString):\n\(components!.day)"
-    }
+func setupCountdown() {
+    /* This sets up the format the date should be in */
     
-    func setupNews() {
-        /* This is the URL for getting the top NYTimes stories */
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
     
-        let url = NSURL(string: "http://api.nytimes.com/svc/topstories/v1/home.json?api-key=cf9ece3591fde74684d354879f3df115:8:73978099")
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url!, completionHandler: {(data, reponse, error) in
-            do {
-                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                    if let items = jsonResult["results"] as? NSArray {
+    /* This initializes the two dates we want to find the time difference between */
+    
+    let targetDate: Date? = dateFormatter.date(from: "2017-06-20")
+    let todayDate: Date? = Date()
+    
+    /* After we have the difference between the two dates, we can display it with our label */
+    
+    let calendar = Calendar.init(identifier: Calendar.Identifier.gregorian);
+    let components = (calendar as NSCalendar?)?.components(.day, from:todayDate!, to:targetDate!, options: [])
+    let dateString = DateFormatter.localizedString(from: targetDate!, dateStyle: .short, timeStyle: .short); //format date correctly
+    let days = (components?.day!)!
+    self.countdownLabel.text = "📅 Days until \(dateString):\n\(days)"
+}
+
+func setupNews() {
+    /* This is the URL for getting the top NYTimes stories */
+    
+    let url = URL(string: "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=8085826bc22e436aa53e58765b1c38f6")
+    let session = URLSession.shared
+    let task = session.dataTask(with: url!, completionHandler: {(data, reponse, error) in
+        do {
+            if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
+                if let items = jsonResult["results"] as? NSArray {
                     
-                        /* Because we just want 1 story, we get the first item in the dictionary */
+                    /* Because we just want 1 story, we get the first item in the dictionary */
+                    
+                    if let topArticle = items[0] as? NSDictionary {
+                        let articleTitle = topArticle["title"] as! String
+                        self.articleUrl = topArticle["url"] as! String
                         
-                        if let topArticle = items[0] as? NSDictionary {
-                            let articleTitle = topArticle["title"] as! String
-                            self.articleUrl = topArticle["url"] as! String
-                            
-                            /* We set the title of the button to be the article title */
-                            
-                            dispatch_async(dispatch_get_main_queue(), {
-                                self.newsButton.setTitle(articleTitle, forState: .Normal)
-                            });
-                        }
+                        /* We set the title of the button to be the article title */
+                        
+                        DispatchQueue.main.async(execute: {
+                            self.newsButton.setTitle(articleTitle, for: UIControlState())
+                        });
                     }
                 }
-            } catch let error as NSError {
-                print(error.localizedDescription)
             }
-        })
-        
-        task.resume()
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    })
+    
+    task.resume()
+}
+
+/* This function will get "triggered" everytime the button is tapped.
+In our case, we want it to open the article URL (in mobile Safari). */
+
+@IBAction func buttonTapped(_ sender: UIButton) {
+    if let url = URL(string: self.articleUrl) {
+        UIApplication.shared.openURL(url)
     }
+}
+
+func setupXKCD() {
+    /* This gets the most current xkcd comic */
     
-    /* This function will get "triggered" everytime the button is tapped.
-    In our case, we want it to open the article URL (in mobile Safari). */
-    
-    @IBAction func buttonTapped(sender: UIButton) {
-        UIApplication.sharedApplication().openURL(NSURL(string: self.articleUrl)!)
-    }
-    
-    func setupXKCD() {
-        /* This gets the most current xkcd comic */
-    
-        let url = NSURL(string: "http://xkcd.com/info.0.json")
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url!, completionHandler: {(data, reponse, error) in
-            do {
-                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                    let imageLink = jsonResult["img"] as! String
-                    let title = jsonResult["title"] as! String
-                                  
-                    let url = NSURL(string: imageLink)
-                    let data = NSData(contentsOfURL: url!)
-                    
-                    /* Once we have the imageLink and title, we can display it. */
-                    
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.xkcdTitleLable.text = title;
-                        self.xkcdImageView.image = UIImage(data: data!)
-                    });
-                }
-            } catch let error as NSError {
-                print(error.localizedDescription)
+    let url = URL(string: "http://xkcd.com/info.0.json")
+    let session = URLSession.shared
+    let task = session.dataTask(with: url!, completionHandler: {(data, reponse, error) in
+        do {
+            if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
+                let imageLink = jsonResult["img"] as! String
+                let title = jsonResult["title"] as! String
+                
+                let url = URL(string: imageLink)
+                let data = try? Data(contentsOf: url!)
+                
+                /* Once we have the imageLink and title, we can display it. */
+                
+                DispatchQueue.main.async(execute: {
+                    self.xkcdTitleLable.text = title;
+                    self.xkcdImageView.image = UIImage(data: data!)
+                });
             }
-        })
-        
-        task.resume()
-    }
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    })
+    
+    task.resume()
+}
 ```
 
 Last but not least, switch over to `Main.storyboard`, control, click, and drag from the Button to the top middle button of the view controller:
@@ -340,7 +314,7 @@ Last but not least, switch over to `Main.storyboard`, control, click, and drag f
 
 # Congratulations!
 
-You’ve finished the iOS Hackpack tutorial. Hopefully, you learned a little about making iPhone apps, HTTP requests, and Swift. If not, let me (organizer-veeral) know in the Slack channel and I'd be down to help!
+You’ve finished the iOS Hackpack tutorial. Hopefully, you learned a little about making iPhone apps, HTTP requests, and Swift. If not, let Veeral (organizer-veeral) or Josh (organizer-josh) know in the Slack channel and we'd be down to help!
 
 If you want to work on the app a little more, here are some ideas on how to extend it:
 
