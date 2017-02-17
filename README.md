@@ -324,5 +324,9 @@ If you want to work on the app a little more, here are some ideas on how to exte
 * random joke?
 * etc. etc.
 
+### BONUS Animations
+
+In the demo project that you can download, we added another View Controller in the storyboard and another View controller file that shows how you can do animations. Check it out if you're interested, as you will have all the skills necessary to implement your own animations.
+
 ### License
 MIT
