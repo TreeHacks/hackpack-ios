@@ -75,6 +75,10 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ioC-xq-0yw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="2Jp-p9-gXZ"/>
+                            <constraint firstItem="ioC-xq-0yw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SbX-rb-ooS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GiL-B8-Y9L"/>
                     <connections>
@@ -171,6 +175,7 @@
         <!--Slideshow View Controller-->
         <scene sceneID="yUH-Lc-ReC">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cMj-v0-FIr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Eux-5R-NYQ" customClass="SlideshowViewController" customModule="Statusboard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8hM-Q9-hE3"/>
@@ -191,6 +196,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4m-Gn-z5p">
                                 <rect key="frame" x="16" y="629" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="duP-9R-vSn" kind="push" id="7Qa-Qy-qU2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -204,7 +212,6 @@
                         <outlet property="button" destination="I7L-3I-yN7" id="2uE-HY-wI8"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cMj-v0-FIr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1322" y="-387"/>
         </scene>
@@ -233,6 +240,7 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="7Qa-Qy-qU2"/>
         <segue reference="hY1-SF-F4W"/>
     </inferredMetricsTieBreakers>
 </document>
