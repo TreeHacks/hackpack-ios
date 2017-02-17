@@ -13,7 +13,7 @@ class SlideshowViewController: UIViewController {
     @IBOutlet weak var button: UIButton!
     
     @IBAction func buttonTapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.5, delay: 1.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.curveEaseIn, animations: {
             [weak self] in
             self?.button.alpha = 0.0
         })
