@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="aLh-Eb-oj8">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="aLh-Eb-oj8">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +19,7 @@
                         <viewControllerLayoutGuide type="bottom" id="a77-9R-voP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="P8B-4N-KMd">
@@ -100,7 +100,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ea5-m9-gZE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="inT-oG-yJZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Countdown label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pz-kg-V1Z">
@@ -138,14 +138,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpb-AG-oAT">
-                                <rect key="frame" x="336" y="637" width="32" height="30"/>
+                                <rect key="frame" x="336" y="748" width="32" height="30"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
                                     <segue destination="Eux-5R-NYQ" kind="push" id="VxN-Te-Edc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8x-Tf-HhK">
-                                <rect key="frame" x="8" y="637" width="34" height="30"/>
+                                <rect key="frame" x="8" y="748" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="push" id="hY1-SF-F4W"/>
@@ -158,6 +158,7 @@
                             <constraint firstAttribute="trailing" secondItem="bpb-AG-oAT" secondAttribute="trailing" constant="7" id="8j9-or-NWq"/>
                             <constraint firstItem="ea5-m9-gZE" firstAttribute="top" secondItem="D8x-Tf-HhK" secondAttribute="bottom" id="ZM3-RO-KhY"/>
                             <constraint firstItem="D8x-Tf-HhK" firstAttribute="leading" secondItem="inT-oG-yJZ" secondAttribute="leading" constant="8" id="nqd-j5-NyJ"/>
+                            <constraint firstItem="bpb-AG-oAT" firstAttribute="leading" secondItem="D8x-Tf-HhK" secondAttribute="trailing" constant="294" id="t5a-Y6-ouW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ENE-cg-X7J"/>
@@ -175,14 +176,13 @@
         <!--Slideshow View Controller-->
         <scene sceneID="yUH-Lc-ReC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cMj-v0-FIr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Eux-5R-NYQ" customClass="SlideshowViewController" customModule="Statusboard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8hM-Q9-hE3"/>
                         <viewControllerLayoutGuide type="bottom" id="KOT-42-Vfi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="r0K-FJ-28N">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I7L-3I-yN7">
@@ -194,7 +194,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4m-Gn-z5p">
-                                <rect key="frame" x="16" y="629" width="34" height="30"/>
+                                <rect key="frame" x="16" y="748" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
                                     <segue destination="duP-9R-vSn" kind="push" id="7Qa-Qy-qU2"/>
@@ -204,7 +204,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="O4m-Gn-z5p" firstAttribute="leading" secondItem="r0K-FJ-28N" secondAttribute="leadingMargin" id="H3p-Vi-cBv"/>
-                            <constraint firstItem="KOT-42-Vfi" firstAttribute="top" secondItem="O4m-Gn-z5p" secondAttribute="bottom" constant="8" id="eDx-Jt-y4J"/>
+                            <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="O4m-Gn-z5p" secondAttribute="trailing" constant="309" id="HDz-EB-fpb"/>
+                            <constraint firstItem="KOT-42-Vfi" firstAttribute="top" secondItem="O4m-Gn-z5p" secondAttribute="bottom" id="eDx-Jt-y4J"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lhd-bM-HVd"/>
@@ -212,6 +213,7 @@
                         <outlet property="button" destination="I7L-3I-yN7" id="2uE-HY-wI8"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cMj-v0-FIr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1322" y="-387"/>
         </scene>
@@ -221,7 +223,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aLh-Eb-oj8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hod-3y-qrm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -234,11 +236,6 @@
             <point key="canvasLocation" x="-121.59999999999999" y="-386.24000000000001"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
-    </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="7Qa-Qy-qU2"/>
         <segue reference="hY1-SF-F4W"/>
