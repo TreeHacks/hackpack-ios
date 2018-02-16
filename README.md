@@ -1,5 +1,5 @@
 # iOS Hackpack Tutorial
-*Come join us on [#hackpack-ios](https://treehacks-2016.slack.com/messages/hackpack-ios) on Slack to get help, hang out, and show off your project!*
+
 ### Overview
 
 For the iOS Hackpack, we’re going to be making a “Morning Briefing” app that displays a bunch of things you may want to see everyday. For example, a daily DJ Khaled GIF, an interesting quote, a countdown to a special day, etc. Throughout the process, you’ll learn about the basic process behind making iPhone apps, making HTTP requests, and Swift (Apple’s new programming language). 
