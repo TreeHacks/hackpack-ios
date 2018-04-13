@@ -2,12 +2,7 @@
 
 ### Overview
 
-For the iOS Hackpack, we’re going to be making a “Morning Briefing” app that displays a bunch of things you may want to see everyday. For example, a daily DJ Khaled GIF, an interesting quote, a countdown to a special day, etc. Throughout the process, you’ll learn about the basic process behind making iPhone apps, making HTTP requests, and Swift (Apple’s new programming language). 
-
-If you’ve taken CS106A/B/X, then read these tutorials over to learn a little bit about Swift:
-http://www.raywenderlich.com/115253/swift-2-tutorial-a-quick-start
-https://learnxinyminutes.com/docs/swift/
-https://www.objc.io/issues/16-swift/swift-functions/
+For the iOS Hackpack, we’re going to be making a “Morning Briefing” app that displays a bunch of things you may want to see everyday. For example, a daily DJ Khaled GIF, an interesting quote, a countdown to a special day, etc. Throughout the process, you’ll learn about the basic process behind making iPhone apps, making HTTP requests, and Swift (Apple’s open source programming language). 
 
 ### Getting Started
 
@@ -99,7 +94,7 @@ Make sure in your project page (accessible from the left hand panel) the followi
 
 ![](https://quip.com/blob/KWDAAAiFNtr/nQwM9CXLd4t_aCUL5wcUTQ?a=7j2nwe57xP9G73qBZFFyuEC35VK78vbMXaqX6U8GBtMa)
 
-After that, choose to run the application on an iPhone 7 (since that's how we setup the storyboard) and then press the run button (looks like a play button):
+After that, choose to run the application on an iPhone 8 (since that's how we setup the storyboard) and then press the run button (looks like a play button):
 ![](https://quip.com/blob/KWDAAAiFNtr/yBze2-IplmAu4H5--smwxw?a=UaSBEA3Ogj9gJ3bHurkRKEwlKSwfbo1VZ4p5UGDWKpQa)
 If everything worked, you should see a random DJ Khaled related GIF show up in the simulator as so:
 
@@ -107,7 +102,7 @@ If everything worked, you should see a random DJ Khaled related GIF show up in t
 Congratulations! You just completed your first checkpoint. Next, we'll add a random quote and weather.
 
 
-### CHECKPOINT #2 - QUOTE + WEather
+### CHECKPOINT #2 - QUOTE + Weather
 
 The process for adding a quote of the day and weather condition is pretty much the same. To do this, we're not going to be adding any files, but rather just using the [quotes.rest](http://quotes.rest/) and [openweathermap.org](http://openweathermap.org/) API.
 
@@ -314,7 +309,7 @@ Last but not least, switch over to `Main.storyboard`, control, click, and drag f
 
 # Congratulations!
 
-You’ve finished the iOS Hackpack tutorial. Hopefully, you learned a little about making iPhone apps, HTTP requests, and Swift. If not, let Veeral (organizer-veeral) or Josh (organizer-josh) know in the Slack channel and we'd be down to help!
+You’ve finished the iOS Hackpack tutorial. Hopefully, you learned a little about making iPhone apps, HTTP requests, and Swift. If not, let Olivia (organizer-olivia) or Joy (organizer-joy) know in the Slack, and we'd be down to help!
 
 If you want to work on the app a little more, here are some ideas on how to extend it:
 
