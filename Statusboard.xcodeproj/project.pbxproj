@@ -15,6 +15,7 @@
 		67BD91BF1C3ED08200637125 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67BD91BE1C3ED08200637125 /* Assets.xcassets */; };
 		67BD91C21C3ED08200637125 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67BD91C01C3ED08200637125 /* LaunchScreen.storyboard */; };
 		67C477A41C40A46B00CF4443 /* AdditionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C477A31C40A46B00CF4443 /* AdditionalViewController.swift */; };
+		7585F6AC21CB3198004846C1 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7585F6AB21CB3198004846C1 /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		67BD91C11C3ED08200637125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67BD91C31C3ED08200637125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67C477A31C40A46B00CF4443 /* AdditionalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalViewController.swift; sourceTree = "<group>"; };
+		7585F6AB21CB3198004846C1 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +65,9 @@
 				67BD91B71C3ED08200637125 /* AppDelegate.swift */,
 				67BD91B91C3ED08200637125 /* ViewController.swift */,
 				67C477A31C40A46B00CF4443 /* AdditionalViewController.swift */,
-				67BD91BB1C3ED08200637125 /* Main.storyboard */,
 				4B73BB471E274E6A00513318 /* SlideshowViewController.swift */,
+				7585F6AB21CB3198004846C1 /* Models.swift */,
+				67BD91BB1C3ED08200637125 /* Main.storyboard */,
 				67BD91BE1C3ED08200637125 /* Assets.xcassets */,
 				67BD91C01C3ED08200637125 /* LaunchScreen.storyboard */,
 				67BD91C31C3ED08200637125 /* Info.plist */,
@@ -156,6 +159,7 @@
 				67C477A41C40A46B00CF4443 /* AdditionalViewController.swift in Sources */,
 				67BD91BA1C3ED08200637125 /* ViewController.swift in Sources */,
 				6742D8AD1C4C41A200A689D1 /* UIImage+Gif.swift in Sources */,
+				7585F6AC21CB3198004846C1 /* Models.swift in Sources */,
 				4B73BB481E274E6A00513318 /* SlideshowViewController.swift in Sources */,
 				67BD91B81C3ED08200637125 /* AppDelegate.swift in Sources */,
 			);
