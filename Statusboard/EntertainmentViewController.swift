@@ -12,11 +12,6 @@ class EntertainmentViewController: UIViewController {
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var xkcdImageView: UIImageView!
     @IBOutlet weak var xkcdTitleLable: UILabel!
-    @IBOutlet weak var animatingButton: UIButton!
-
-    @IBAction func animateButtonAway(_ sender: Any) {
-        animatingButton.animateOut()
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +19,6 @@ class EntertainmentViewController: UIViewController {
         // Load all the components displayed on the screen
         setupCountdown(until: "2019-02-18")
         setupXKCD()
-        animatingButton.animateIn()
     }
 
     // Display a countdown of the number of days until the passed in date
@@ -39,7 +33,7 @@ class EntertainmentViewController: UIViewController {
         let todayDate: Date! = Date()
         let dateString = DateFormatter.localizedString(from: targetDate, dateStyle: .short, timeStyle: .none)
         if let numDays = calendar.dateComponents([.day], from: todayDate, to: targetDate).day {
-            self.countdownLabel.text = "📅 Days until \(dateString): \(numDays)"
+            self.countdownLabel.text = "Days until \(dateString): \(numDays)"
         }
     }
 
@@ -64,22 +58,5 @@ class EntertainmentViewController: UIViewController {
             }
         })
         task.resume()
-    }
-}
-
-extension UIButton {
-    func animateIn() {
-        self.alpha = 0.0
-        UIView.animate(withDuration: 0.5, delay: 1.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.curveEaseIn, animations: {
-            [weak self] in
-            self?.alpha = 1.0
-        })
-    }
-
-    func animateOut() {
-        UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.curveEaseIn, animations: {
-            [weak self] in
-            self?.alpha = 0.0
-        })
     }
 }

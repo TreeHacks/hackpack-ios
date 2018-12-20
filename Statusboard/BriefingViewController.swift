@@ -11,9 +11,8 @@ import CoreLocation
 class BriefingViewController: UIViewController {
 
     @IBOutlet weak var weatherTextView: UITextView!
-
     @IBOutlet weak var newsButton: UIButton!
-    var articleUrlString: String?
+    @IBOutlet weak var animatingButton: UIButton!
 
     // Access the current location
     private var locationManager = CLLocationManager()
@@ -23,11 +22,17 @@ class BriefingViewController: UIViewController {
         }
     }
 
+    var articleUrlString: String?
+
     // Open the url every time the button is tapped
     @IBAction func buttonTapped(_ sender: UIButton) {
         if let urlString = articleUrlString, let url = URL(string: urlString) {
             UIApplication.shared.openURL(url)
         }
+    }
+
+    @IBAction func animateButtonAway(_ sender: Any) {
+        animatingButton.animateOut()
     }
 
     override func viewDidLoad() {
@@ -39,6 +44,7 @@ class BriefingViewController: UIViewController {
         // Load all the components displayed on the screen
         setupNews()
         setupWeather()
+        animatingButton.animateIn()
     }
 
     // Display a button that links to and displays the title of the top NYTimes article by calling the NYTimes API
@@ -78,7 +84,7 @@ class BriefingViewController: UIViewController {
                             let humidity = items["humidity"] as? Double {
 
                             DispatchQueue.main.async {
-                                self.weatherTextView.text = "🌎 Today's Weather Forecast 🌎\n\nHigh: \(tempMax)°F\nLow: \(tempMin)°F\nHumidity: \(humidity)%"
+                                self.weatherTextView.text = "Today's Forecast:\n\nHigh: \(tempMax)°F\nLow: \(tempMin)°F\nHumidity: \(humidity)%"
                             }
                         }
                     }
@@ -88,5 +94,22 @@ class BriefingViewController: UIViewController {
             }
         })
         task.resume()
+    }
+}
+
+extension UIButton {
+    func animateIn() {
+        self.alpha = 0.0
+        UIView.animate(withDuration: 0.5, delay: 1.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            [weak self] in
+            self?.alpha = 1.0
+        })
+    }
+
+    func animateOut() {
+        UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            [weak self] in
+            self?.alpha = 0.0
+        })
     }
 }
