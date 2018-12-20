@@ -12,7 +12,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Statusboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="RiseAndShine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lIA-ah-EJX"/>
                         <viewControllerLayoutGuide type="bottom" id="a77-9R-voP"/>
@@ -107,7 +107,7 @@
         <!--Briefing View Controller-->
         <scene sceneID="GN1-Af-5RO">
             <objects>
-                <viewController id="duP-9R-vSn" customClass="BriefingViewController" customModule="Statusboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="duP-9R-vSn" customClass="BriefingViewController" customModule="RiseAndShine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gle-ZH-hKg"/>
                         <viewControllerLayoutGuide type="bottom" id="ea5-m9-gZE"/>
@@ -229,7 +229,7 @@
         <!--Entertainment View Controller-->
         <scene sceneID="G4f-2r-3F3">
             <objects>
-                <viewController id="UBg-YK-gua" customClass="EntertainmentViewController" customModule="Statusboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UBg-YK-gua" customClass="EntertainmentViewController" customModule="RiseAndShine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6AA-Ue-Bfj"/>
                         <viewControllerLayoutGuide type="bottom" id="Rlq-Qc-xTB"/>

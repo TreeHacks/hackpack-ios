@@ -17,11 +17,6 @@ class BriefingViewController: UIViewController {
 
     // Access the current location
     private var locationManager = CLLocationManager()
-    private var currentLocation: CLLocation? {
-        get {
-            return (CLLocationManager.authorizationStatus() == .authorizedWhenInUse) ? locationManager.location : nil
-        }
-    }
 
     private var articleUrlString: String?
 
@@ -39,12 +34,11 @@ class BriefingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Request access to the user's location
+        locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
 
-        // Load all the components displayed on the screen
+        // Load all the components displayed on the screen. Note: don't need to call setupWeather since call is in delegate
         setupNews()
-        setupWeather()
         animatingButton.animateIn()
     }
 
@@ -74,7 +68,7 @@ class BriefingViewController: UIViewController {
     // Display the weather in the user's current location using the CoreLocation framework and the Open Weather Map API
     private func setupWeather() {
         // Only display if we have the current location
-        guard let coordinates = currentLocation?.coordinate,
+        guard let coordinates = locationManager.location?.coordinate,
             let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&units=imperial&APPID=2f6eb7ed8c5576e5d51fe15b51cdea10") else { return }
         let task = URLSession.shared.dataTask(with: url, completionHandler: {(data, reponse, error) in
             do {
@@ -92,6 +86,16 @@ class BriefingViewController: UIViewController {
             }
         })
         task.resume()
+    }
+}
+
+extension BriefingViewController: CLLocationManagerDelegate {
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+            setupWeather()
+        }
     }
 }
 

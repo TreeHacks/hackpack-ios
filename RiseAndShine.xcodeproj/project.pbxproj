@@ -19,7 +19,7 @@
 
 /* Begin PBXFileReference section */
 		6742D8AC1C4C41A200A689D1 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
-		67BD91B41C3ED08100637125 /* Statusboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Statusboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		67BD91B41C3ED08100637125 /* RiseAndShine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RiseAndShine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BD91B71C3ED08200637125 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67BD91B91C3ED08200637125 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		67BD91BC1C3ED08200637125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		67BD91AB1C3ED08100637125 = {
 			isa = PBXGroup;
 			children = (
-				67BD91B61C3ED08100637125 /* Statusboard */,
+				67BD91B61C3ED08100637125 /* RiseAndShine */,
 				67BD91B51C3ED08100637125 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,12 +52,12 @@
 		67BD91B51C3ED08100637125 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				67BD91B41C3ED08100637125 /* Statusboard.app */,
+				67BD91B41C3ED08100637125 /* RiseAndShine.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		67BD91B61C3ED08100637125 /* Statusboard */ = {
+		67BD91B61C3ED08100637125 /* RiseAndShine */ = {
 			isa = PBXGroup;
 			children = (
 				67BD91B71C3ED08200637125 /* AppDelegate.swift */,
@@ -70,7 +70,7 @@
 				67BD91C31C3ED08200637125 /* Info.plist */,
 				67BD91CB1C3ED36300637125 /* Supporting Files */,
 			);
-			path = Statusboard;
+			path = RiseAndShine;
 			sourceTree = "<group>";
 		};
 		67BD91CB1C3ED36300637125 /* Supporting Files */ = {
@@ -84,9 +84,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		67BD91B31C3ED08100637125 /* Statusboard */ = {
+		67BD91B31C3ED08100637125 /* RiseAndShine */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 67BD91C61C3ED08200637125 /* Build configuration list for PBXNativeTarget "Statusboard" */;
+			buildConfigurationList = 67BD91C61C3ED08200637125 /* Build configuration list for PBXNativeTarget "RiseAndShine" */;
 			buildPhases = (
 				67BD91B01C3ED08100637125 /* Sources */,
 				67BD91B11C3ED08100637125 /* Frameworks */,
@@ -96,9 +96,9 @@
 			);
 			dependencies = (
 			);
-			name = Statusboard;
+			name = RiseAndShine;
 			productName = Statusboard;
-			productReference = 67BD91B41C3ED08100637125 /* Statusboard.app */;
+			productReference = 67BD91B41C3ED08100637125 /* RiseAndShine.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -117,7 +117,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 67BD91AF1C3ED08100637125 /* Build configuration list for PBXProject "Statusboard" */;
+			buildConfigurationList = 67BD91AF1C3ED08100637125 /* Build configuration list for PBXProject "RiseAndShine" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -130,7 +130,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				67BD91B31C3ED08100637125 /* Statusboard */,
+				67BD91B31C3ED08100637125 /* RiseAndShine */,
 			);
 		};
 /* End PBXProject section */
@@ -292,9 +292,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8GEKYYW3CQ;
-				INFOPLIST_FILE = Statusboard/Info.plist;
+				INFOPLIST_FILE = RiseAndShine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = treehacks.com.Statusboard;
+				PRODUCT_BUNDLE_IDENTIFIER = treehacks.com.RiseAndShine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -306,9 +306,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8GEKYYW3CQ;
-				INFOPLIST_FILE = Statusboard/Info.plist;
+				INFOPLIST_FILE = RiseAndShine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = treehacks.com.Statusboard;
+				PRODUCT_BUNDLE_IDENTIFIER = treehacks.com.RiseAndShine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -318,7 +318,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		67BD91AF1C3ED08100637125 /* Build configuration list for PBXProject "Statusboard" */ = {
+		67BD91AF1C3ED08100637125 /* Build configuration list for PBXProject "RiseAndShine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				67BD91C41C3ED08200637125 /* Debug */,
@@ -327,7 +327,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		67BD91C61C3ED08200637125 /* Build configuration list for PBXNativeTarget "Statusboard" */ = {
+		67BD91C61C3ED08200637125 /* Build configuration list for PBXNativeTarget "RiseAndShine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				67BD91C71C3ED08200637125 /* Debug */,
