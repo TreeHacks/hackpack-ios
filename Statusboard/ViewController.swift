@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var quoteTextView: UITextView!
     @IBOutlet weak var weatherTextView: UITextView!
 
+    // Access the current location
     private var locationManager = CLLocationManager()
     private var currentLocation: CLLocation? {
         get {
@@ -92,6 +93,7 @@ class ViewController: UIViewController {
 
     // Display the weather in the user's current location using the CoreLocation framework and the Open Weather Map API
     func setupWeather() {
+        // Only display if we have the current location
         guard let coordinates = currentLocation?.coordinate else { return }
         let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&units=imperial&APPID=2f6eb7ed8c5576e5d51fe15b51cdea10")
         let task = URLSession.shared.dataTask(with: url!, completionHandler: {(data, reponse, error) in

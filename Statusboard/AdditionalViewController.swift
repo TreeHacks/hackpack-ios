@@ -11,112 +11,86 @@ class AdditionalViewController: UIViewController {
 
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var newsButton: UIButton!
-    var articleUrl = String()
+    var articleUrlString: String?
     
     @IBOutlet weak var xkcdImageView: UIImageView!
     @IBOutlet weak var xkcdTitleLable: UILabel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        setupCountdown();
-        setupNews();
-        setupXKCD();
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    func setupCountdown() {
-        /* This sets up the format the date should be in */
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        /* This initializes the two dates we want to find the time difference between */
-        
-        let targetDate: Date? = dateFormatter.date(from: "2017-06-20")
-        let todayDate: Date? = Date()
-        
-        /* After we have the difference between the two dates, we can display it with our label */
-        
-        let calendar = Calendar.init(identifier: Calendar.Identifier.gregorian);
-        let components = (calendar as NSCalendar?)?.components(.day, from:todayDate!, to:targetDate!, options: [])
-        let dateString = DateFormatter.localizedString(from: targetDate!, dateStyle: .short, timeStyle: .short); //format date correctly
-        let days = (components?.day!)!
-        self.countdownLabel.text = "📅 Days until \(dateString):\n\(days)"
-    }
-    
-    func setupNews() {
-        /* This is the URL for getting the top NYTimes stories */
-        
-        let url = URL(string: "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=8085826bc22e436aa53e58765b1c38f6")
-        let session = URLSession.shared
-        let task = session.dataTask(with: url!, completionHandler: {(data, reponse, error) in
-            do {
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
-                    if let items = jsonResult["results"] as? NSArray {
-                        
-                        /* Because we just want 1 story, we get the first item in the dictionary */
-                        
-                        if let topArticle = items[0] as? NSDictionary {
-                            let articleTitle = topArticle["title"] as! String
-                            self.articleUrl = topArticle["url"] as! String
-                            
-                            /* We set the title of the button to be the article title */
-                            
-                            DispatchQueue.main.async(execute: {
-                                self.newsButton.setTitle(articleTitle, for: UIControl.State())
-                            });
-                        }
-                    }
-                }
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-        })
-        
-        task.resume()
-    }
-    
-    /* This function will get "triggered" everytime the button is tapped.
-    In our case, we want it to open the article URL (in mobile Safari). */
-    
+    // Open the url every time the button is tapped
     @IBAction func buttonTapped(_ sender: UIButton) {
-        if let url = URL(string: self.articleUrl) {
+        if let urlString = articleUrlString, let url = URL(string: urlString) {
             UIApplication.shared.openURL(url)
         }
     }
     
-    func setupXKCD() {
-        /* This gets the most current xkcd comic */
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Load all the components displayed on the screen
+        setupCountdown(until: "2019-02-18");
+        setupNews();
+        setupXKCD();
+    }
+
+    // Display a countdown of the number of days until the passed in date
+    func setupCountdown(until targetDateString: String) {
+        // Set up the format the date should be in
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let calendar = Calendar.init(identifier: .gregorian)
         
-        let url = URL(string: "http://xkcd.com/info.0.json")
+        // Find the difference between target date and today and display in label
+        let targetDate: Date! = dateFormatter.date(from: targetDateString)
+        let todayDate: Date! = Date()
+        let dateString = DateFormatter.localizedString(from: targetDate, dateStyle: .short, timeStyle: .none)
+        if let numDays = calendar.dateComponents([.day], from: todayDate, to: targetDate).day {
+            self.countdownLabel.text = "📅 Days until \(dateString): \(numDays)"
+        }
+    }
+
+    // Display a button that links to and displays the title of the top NYTimes article by calling the NYTimes API
+    func setupNews() {
+        guard let url = URL(string: "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=8085826bc22e436aa53e58765b1c38f6") else { return }
         let session = URLSession.shared
-        let task = session.dataTask(with: url!, completionHandler: {(data, reponse, error) in
+        let task = session.dataTask(with: url, completionHandler: {(data, reponse, error) in
+            do {
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
+                    guard let topArticle = (jsonResult["results"] as? NSArray)?[0] as? NSDictionary,
+                        let articleTitle = topArticle["title"] as? String,
+                        let url = topArticle["url"] as? String else { return }
+
+                    self.articleUrlString = url
+                    DispatchQueue.main.async {
+                        self.newsButton.setTitle(articleTitle, for: .normal)
+                    }
+                }
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        })
+        task.resume()
+    }
+
+    // Displays the most current xkcd comic in an image view
+    func setupXKCD() {
+        guard let url = URL(string: "http://xkcd.com/info.0.json") else { return }
+        let session = URLSession.shared
+        let task = session.dataTask(with: url, completionHandler: {(data, reponse, error) in
             do {
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
                     let imageLink = jsonResult["img"] as! String
                     let title = jsonResult["title"] as! String
-                    
-                    let url = URL(string: imageLink)
-                    let data = try? Data(contentsOf: url!)
-                    
-                    /* Once we have the imageLink and title, we can display it. */
+                    guard let url = URL(string: imageLink), let imageData = try? Data(contentsOf: url) else { return }
                     
                     DispatchQueue.main.async(execute: {
                         self.xkcdTitleLable.text = title;
-                        self.xkcdImageView.image = UIImage(data: data!)
-                    });
+                        self.xkcdImageView.image = UIImage(data: imageData)
+                    })
                 }
-            } catch let error as NSError {
+            } catch let error {
                 print(error.localizedDescription)
             }
         })
-        
         task.resume()
     }
 }
