@@ -62,9 +62,9 @@
 			children = (
 				67BD91B71C3ED08200637125 /* AppDelegate.swift */,
 				67BD91B91C3ED08200637125 /* HomeViewController.swift */,
-				67BD91BB1C3ED08200637125 /* Main.storyboard */,
 				7572D6ED21CB560D00A2D920 /* BriefingViewController.swift */,
 				7572D6EF21CB577C00A2D920 /* EntertainmentViewController.swift */,
+				67BD91BB1C3ED08200637125 /* Main.storyboard */,
 				67BD91BE1C3ED08200637125 /* Assets.xcassets */,
 				67BD91C01C3ED08200637125 /* LaunchScreen.storyboard */,
 				67BD91C31C3ED08200637125 /* Info.plist */,

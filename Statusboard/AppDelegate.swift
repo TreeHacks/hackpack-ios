@@ -1,8 +1,9 @@
 //
-//  TreeHacks 2019
-//
 //  AppDelegate.swift
-//  Statusboard
+//  Rise & Shine
+//
+//  TreeHacks 2019
+//  https://treehacks.com
 //
 
 import UIKit

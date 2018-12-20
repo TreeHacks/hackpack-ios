@@ -1,8 +1,9 @@
 //
 //  BriefingViewController.swift
-//  Statusboard
+//  Rise & Shine
 //
-//  Created by Olivia Brown on 12/19/18.
+//  TreeHacks 2019
+//  https://treehacks.com
 //
 
 import UIKit
@@ -10,9 +11,9 @@ import CoreLocation
 
 class BriefingViewController: UIViewController {
 
-    @IBOutlet weak var weatherTextView: UITextView!
-    @IBOutlet weak var newsButton: UIButton!
-    @IBOutlet weak var animatingButton: UIButton!
+    @IBOutlet private weak var weatherTextView: UITextView!
+    @IBOutlet private weak var newsButton: UIButton!
+    @IBOutlet private weak var animatingButton: UIButton!
 
     // Access the current location
     private var locationManager = CLLocationManager()
@@ -22,16 +23,16 @@ class BriefingViewController: UIViewController {
         }
     }
 
-    var articleUrlString: String?
+    private var articleUrlString: String?
 
     // Open the url every time the button is tapped
-    @IBAction func buttonTapped(_ sender: UIButton) {
+    @IBAction private func buttonTapped(_ sender: UIButton) {
         if let urlString = articleUrlString, let url = URL(string: urlString) {
             UIApplication.shared.openURL(url)
         }
     }
 
-    @IBAction func animateButtonAway(_ sender: Any) {
+    @IBAction private func animateButtonAway(_ sender: Any) {
         animatingButton.animateOut()
     }
 
@@ -48,13 +49,13 @@ class BriefingViewController: UIViewController {
     }
 
     // Display a button that links to and displays the title of the top NYTimes article by calling the NYTimes API
-    func setupNews() {
+    private func setupNews() {
         guard let url = URL(string: "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=8085826bc22e436aa53e58765b1c38f6") else { return }
         let session = URLSession.shared
         let task = session.dataTask(with: url, completionHandler: {(data, reponse, error) in
             do {
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
-                    guard let topArticle = (jsonResult["results"] as? NSArray)?[0] as? NSDictionary,
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+                    guard let topArticle = (jsonResult["results"] as? [[String: Any]])?[0],
                         let articleTitle = topArticle["title"] as? String,
                         let url = topArticle["url"] as? String else { return }
 
@@ -71,22 +72,19 @@ class BriefingViewController: UIViewController {
     }
 
     // Display the weather in the user's current location using the CoreLocation framework and the Open Weather Map API
-    func setupWeather() {
+    private func setupWeather() {
         // Only display if we have the current location
-        guard let coordinates = currentLocation?.coordinate else { return }
-        let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&units=imperial&APPID=2f6eb7ed8c5576e5d51fe15b51cdea10")
-        let task = URLSession.shared.dataTask(with: url!, completionHandler: {(data, reponse, error) in
+        guard let coordinates = currentLocation?.coordinate,
+            let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&units=imperial&APPID=2f6eb7ed8c5576e5d51fe15b51cdea10") else { return }
+        let task = URLSession.shared.dataTask(with: url, completionHandler: {(data, reponse, error) in
             do {
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
-                    if let items = jsonResult["main"] as? NSDictionary {
-                        if let tempMin = items["temp_min"] as? Double,
-                            let tempMax = items["temp_max"] as? Double,
-                            let humidity = items["humidity"] as? Double {
-
-                            DispatchQueue.main.async {
-                                self.weatherTextView.text = "Today's Forecast:\n\nHigh: \(tempMax)°F\nLow: \(tempMin)°F\nHumidity: \(humidity)%"
-                            }
-                        }
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+                    guard let items = jsonResult["main"] as? [String: Any],
+                        let tempMin = items["temp_min"] as? Double,
+                        let tempMax = items["temp_max"] as? Double,
+                        let humidity = items["humidity"] as? Double else { return }
+                    DispatchQueue.main.async {
+                        self.weatherTextView.text = "Today's Forecast:\n\nHigh: \(tempMax)°F\nLow: \(tempMin)°F\nHumidity: \(humidity)%"
                     }
                 }
             } catch let error {

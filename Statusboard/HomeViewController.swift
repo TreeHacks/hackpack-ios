@@ -1,16 +1,17 @@
 //
-//  TreeHacks 2019
+//  HomeViewController.swift
+//  Rise & Shine
 //
-//  ViewController.swift
-//  Statusboard
+//  TreeHacks 2019
+//  https://treehacks.com
 //
 
 import UIKit
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var quoteTextView: UITextView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var quoteTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,46 +29,43 @@ class HomeViewController: UIViewController {
     }
 
     // Load a GIF of the passed search term by querying the giphy.com API and filling our image view with the content
-    func setupGIF(of searchTerm: String) {
+    private func setupGIF(of searchTerm: String) {
         // Construct the URL by inserting our search term (which we edit to have the correct characters for a URL)
-        guard let encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else { return }
-        let searchURL = URL(string:"http://api.giphy.com/v1/gifs/translate?s=\(encodedSearchTerm)&api_key=dc6zaTOxFJmzC")
-        let searchData = try? Data(contentsOf: searchURL!)
+        guard let encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
+            let searchURL = URL(string:"http://api.giphy.com/v1/gifs/translate?s=\(encodedSearchTerm)&api_key=dc6zaTOxFJmzC") else { return }
+        let searchData = try? Data(contentsOf: searchURL)
         
         // Parse the JSON by accessing multiple levels of dictionaries to get the gif's link
         do {
-            if let jsonResult = try JSONSerialization.jsonObject(with: searchData!, options: []) as? NSDictionary {
-                if let images = (jsonResult["data"] as? NSDictionary)?["images"] as? NSDictionary {
-                    if let link = (images["downsized"] as? NSDictionary)?["url"] as? String,
-                        let url = URL(string: link) {
-                        if let gifData = try? Data(contentsOf: url), let gif = UIImage.gifWithData(gifData) {
-                            self.imageView.image = gif // display the gif we found
-                        }
-                    }
-                }
+            if let jsonResult = try JSONSerialization.jsonObject(with: searchData!, options: []) as? [String: Any] {
+                guard let images = (jsonResult["data"] as? [String: Any])?["images"] as? [String: Any],
+                    let link = (images["downsized"] as? [String: String])?["url"],
+                    let url = URL(string: link),
+                    let gifData = try? Data(contentsOf: url),
+                    let gif = UIImage.gifWithData(gifData) else { return }
+                self.imageView.image = gif // display the gif we found
             }
         } catch let error {
             print(error.localizedDescription)
         }
     }
 
-    // Load a quote using the NSURLSession framework to get data returned from Quotes REST API
-    func setupQuote() {
-        let url = URL(string: "http://quotes.rest/qod.json")
+    // Load a quote using the URLSession framework to get data returned from Quotes REST API
+    private func setupQuote() {
+        guard let url = URL(string: "http://quotes.rest/qod.json") else { return }
         let session = URLSession.shared
-        let task = session.dataTask(with: url!, completionHandler: {(data, reponse, error) in
+        let task = session.dataTask(with: url, completionHandler: {(data, reponse, error) in
             do {
                 // Parse the JSON by accessing multiple levels of dictionaries to get the quote and author
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
-                    if let quotes = (jsonResult["contents"] as? NSDictionary)?["quotes"] as? NSArray {
-                        if let firstQuote = quotes[0] as? NSDictionary,
-                            let quoteText = firstQuote["quote"] as? String,
-                            let quoteAuthor = firstQuote["author"] as? String {
-                            // Change the text view to display quote on the main thread
-                            DispatchQueue.main.async {
-                                self.quoteTextView.text = "\(quoteText)\n\n- \(quoteAuthor)"
-                            }
-                        }
+                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+                    guard let quotes = (jsonResult["contents"] as? [String: Any])?["quotes"] as? [Any],
+                        let firstQuote = quotes[0] as? [String: Any],
+                        let quoteText = firstQuote["quote"] as? String,
+                        let quoteAuthor = firstQuote["author"] as? String else { return }
+
+                    // Change the text view to display quote on the main thread
+                    DispatchQueue.main.async {
+                        self.quoteTextView.text = "\(quoteText)\n\n- \(quoteAuthor)"
                     }
                 }
             } catch let error {
