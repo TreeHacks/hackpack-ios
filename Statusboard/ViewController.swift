@@ -13,7 +13,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var quoteTextView: UITextView!
     @IBOutlet weak var weatherTextView: UITextView!
+
     private var locationManager = CLLocationManager()
+    private var currentLocation: CLLocation? {
+        get {
+            return (CLLocationManager.authorizationStatus() == .authorizedWhenInUse) ? locationManager.location : nil
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +34,7 @@ class ViewController: UIViewController {
         // Request access to the user's location
         locationManager.requestWhenInUseAuthorization()
 
-        // Set up all the components
+        // Set up all the components on the screen
         setupGIF(of: "sunshine")
         setupQuote()
         setupWeather()
@@ -71,9 +77,9 @@ class ViewController: UIViewController {
                             let quoteText = firstQuote["quote"] as? String,
                             let quoteAuthor = firstQuote["author"] as? String {
                             // Change the text view to display quote on the main thread
-                            DispatchQueue.main.async(execute: {
+                            DispatchQueue.main.async {
                                 self.quoteTextView.text = "💭 Quote of the Day 💭\n\n\(quoteText)\n\n- \(quoteAuthor)"
-                            });
+                            }
                         }
                     }
                 }
@@ -84,36 +90,28 @@ class ViewController: UIViewController {
         task.resume()
     }
 
-    // Display the weather in the user's current location using the Maps framework and the Open Weather Map API
+    // Display the weather in the user's current location using the CoreLocation framework and the Open Weather Map API
     func setupWeather() {
-        let location = "Stanford"
-        //        var currentLocation: CLLocation? = nil
-        //
-        //        if (CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
-        //            CLLocationManager.authorizationStatus() ==  .authorizedAlways) {
-        //            currentLocation = locationManager.location
-        //        }
-        //        let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(currentLocation!.coordinate.latitude)&lon=\(currentLocation!.coordinate.longitude),us%20&units=imperial&APPID=2f6eb7ed8c5576e5d51fe15b51cdea10")
-        let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(location),us%20&units=imperial&APPID=2f6eb7ed8c5576e5d51fe15b51cdea10")
-        let session = URLSession.shared
-        let task = session.dataTask(with: url!, completionHandler: {(data, reponse, error) in
+        guard let coordinates = currentLocation?.coordinate else { return }
+        let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&units=imperial&APPID=2f6eb7ed8c5576e5d51fe15b51cdea10")
+        let task = URLSession.shared.dataTask(with: url!, completionHandler: {(data, reponse, error) in
             do {
                 if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
                     if let items = jsonResult["main"] as? NSDictionary {
-                        let tempMin = items["temp_min"] as! NSNumber
-                        let tempMax = items["temp_max"] as! NSNumber
-                        let humidity = items["humidity"] as! NSNumber
-                        
-                        DispatchQueue.main.async(execute: {
-                            self.weatherTextView.text = "🌎 Today's Weather Forecast for \(location) 🌎\n\nHigh: \(tempMax)°F\nLow: \(tempMin)°F\nHumidity: \(humidity)%"
-                        });
+                        if let tempMin = items["temp_min"] as? Double,
+                            let tempMax = items["temp_max"] as? Double,
+                            let humidity = items["humidity"] as? Double {
+
+                            DispatchQueue.main.async {
+                                self.weatherTextView.text = "🌎 Today's Weather Forecast 🌎\n\nHigh: \(tempMax)°F\nLow: \(tempMin)°F\nHumidity: \(humidity)%"
+                            }
+                        }
                     }
                 }
-            } catch let error as NSError {
+            } catch let error {
                 print(error.localizedDescription)
             }
         })
         task.resume()
     }
 }
-
