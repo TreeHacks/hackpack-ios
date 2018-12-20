@@ -63,8 +63,8 @@
 				67BD91B71C3ED08200637125 /* AppDelegate.swift */,
 				67BD91B91C3ED08200637125 /* ViewController.swift */,
 				67C477A31C40A46B00CF4443 /* AdditionalViewController.swift */,
-				67BD91BB1C3ED08200637125 /* Main.storyboard */,
 				4B73BB471E274E6A00513318 /* SlideshowViewController.swift */,
+				67BD91BB1C3ED08200637125 /* Main.storyboard */,
 				67BD91BE1C3ED08200637125 /* Assets.xcassets */,
 				67BD91C01C3ED08200637125 /* LaunchScreen.storyboard */,
 				67BD91C31C3ED08200637125 /* Info.plist */,
@@ -113,7 +113,7 @@
 					67BD91B31C3ED08100637125 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 8GEKYYW3CQ;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -292,8 +292,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = treehacks.com.Statusboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -307,8 +306,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = treehacks.com.Statusboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
