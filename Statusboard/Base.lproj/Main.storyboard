@@ -52,24 +52,46 @@
                                     <constraint firstAttribute="width" secondItem="ioC-xq-0yw" secondAttribute="height" multiplier="4:3" id="UkK-ba-4ZQ"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Loading quote..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Def-AH-2Cv">
-                                <rect key="frame" x="31" y="419.33333333333331" width="313" height="184.99999999999994"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NPb-RT-7dj">
+                                <rect key="frame" x="15" y="399.33333333333331" width="345" height="139.99999999999994"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="💭 Quote of the Day 🗣" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCj-4S-cZe">
+                                        <rect key="frame" x="15" y="0.0" width="315" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="D1V-xA-Ksp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Loading quote..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Def-AH-2Cv">
+                                        <rect key="frame" x="15" y="40" width="315" height="100"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="6K6-oc-pB8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="zCj-4S-cZe" secondAttribute="trailing" constant="15" id="3Fn-Ya-AEt"/>
+                                    <constraint firstItem="Def-AH-2Cv" firstAttribute="leading" secondItem="NPb-RT-7dj" secondAttribute="leading" constant="15" id="SR9-X5-fjI"/>
+                                    <constraint firstItem="zCj-4S-cZe" firstAttribute="leading" secondItem="NPb-RT-7dj" secondAttribute="leading" constant="15" id="n7f-cZ-D1A"/>
+                                    <constraint firstAttribute="trailing" secondItem="Def-AH-2Cv" secondAttribute="trailing" constant="15" id="yJ1-Nv-5QV"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="a77-9R-voP" firstAttribute="top" secondItem="w28-V3-nhv" secondAttribute="bottom" constant="10" id="1og-xu-KtY"/>
+                            <constraint firstItem="NPb-RT-7dj" firstAttribute="top" secondItem="ioC-xq-0yw" secondAttribute="bottom" constant="30" id="7UH-yi-w6p"/>
                             <constraint firstItem="ioC-xq-0yw" firstAttribute="top" secondItem="lIA-ah-EJX" secondAttribute="bottom" id="I1V-Sd-TZt"/>
                             <constraint firstAttribute="trailing" secondItem="ioC-xq-0yw" secondAttribute="trailing" id="Jvf-hv-u4O"/>
                             <constraint firstItem="ioC-xq-0yw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="L8Q-Ue-BIx"/>
-                            <constraint firstItem="Def-AH-2Cv" firstAttribute="top" secondItem="ioC-xq-0yw" secondAttribute="bottom" constant="49.999999999999943" id="SUn-Z2-F9Z"/>
+                            <constraint firstItem="NPb-RT-7dj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="TdL-Lt-sUZ"/>
                             <constraint firstItem="w28-V3-nhv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gRV-Pb-Hnd"/>
-                            <constraint firstItem="w28-V3-nhv" firstAttribute="top" secondItem="Def-AH-2Cv" secondAttribute="bottom" priority="500" constant="50" id="mCp-V3-6vn"/>
-                            <constraint firstItem="Def-AH-2Cv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="15" id="qeV-OV-eni"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Def-AH-2Cv" secondAttribute="trailing" constant="15" id="uhn-4c-NHk"/>
+                            <constraint firstAttribute="trailing" secondItem="NPb-RT-7dj" secondAttribute="trailing" constant="15" id="lBm-fq-Maw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GiL-B8-Y9L"/>
@@ -143,7 +165,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="4s9-fC-FOq"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>

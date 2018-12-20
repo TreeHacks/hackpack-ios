@@ -65,7 +65,7 @@ class HomeViewController: UIViewController {
                             let quoteAuthor = firstQuote["author"] as? String {
                             // Change the text view to display quote on the main thread
                             DispatchQueue.main.async {
-                                self.quoteTextView.text = "💭 Quote of the Day 💭\n\n\(quoteText)\n\n- \(quoteAuthor)"
+                                self.quoteTextView.text = "\(quoteText)\n\n- \(quoteAuthor)"
                             }
                         }
                     }
