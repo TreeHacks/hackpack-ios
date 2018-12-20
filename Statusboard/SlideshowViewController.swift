@@ -1,9 +1,8 @@
 //
+//  TreeHacks 2019
+//
 //  SlideshowViewController.swift
 //  Statusboard
-//
-//  Created by Joshua Singer on 1/11/17.
-//
 //
 
 import UIKit
@@ -13,7 +12,7 @@ class SlideshowViewController: UIViewController {
     @IBOutlet weak var button: UIButton!
     
     @IBAction func buttonTapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.curveEaseIn, animations: {
             [weak self] in
             self?.button.alpha = 0.0
         })
@@ -24,7 +23,7 @@ class SlideshowViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         button.alpha = 0.0
-        UIView.animate(withDuration: 0.5, delay: 1.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.5, delay: 1.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.curveEaseIn, animations: {
             [weak self] in
             self?.button.alpha = 1.0
         })

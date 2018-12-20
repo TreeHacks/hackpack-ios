@@ -1,9 +1,8 @@
 //
+//  TreeHacks 2019
+//
 //  AdditionalViewController.swift
 //  Statusboard
-//
-//  Created by Veeral Patel on 1/8/16.
-//
 //
 
 import UIKit
@@ -70,7 +69,7 @@ class AdditionalViewController: UIViewController {
                             /* We set the title of the button to be the article title */
                             
                             DispatchQueue.main.async(execute: {
-                                self.newsButton.setTitle(articleTitle, for: UIControlState())
+                                self.newsButton.setTitle(articleTitle, for: UIControl.State())
                             });
                         }
                     }

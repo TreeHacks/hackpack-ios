@@ -1,9 +1,8 @@
 //
+//  TreeHacks 2019
+//
 //  ViewController.swift
 //  Statusboard
-//
-//  Created by Veeral Patel on 1/7/16.
-//
 //
 
 import UIKit
