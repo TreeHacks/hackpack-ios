@@ -7,27 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B73BB481E274E6A00513318 /* SlideshowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73BB471E274E6A00513318 /* SlideshowViewController.swift */; };
 		6742D8AD1C4C41A200A689D1 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6742D8AC1C4C41A200A689D1 /* UIImage+Gif.swift */; };
 		67BD91B81C3ED08200637125 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BD91B71C3ED08200637125 /* AppDelegate.swift */; };
-		67BD91BA1C3ED08200637125 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BD91B91C3ED08200637125 /* ViewController.swift */; };
+		67BD91BA1C3ED08200637125 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BD91B91C3ED08200637125 /* HomeViewController.swift */; };
 		67BD91BD1C3ED08200637125 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67BD91BB1C3ED08200637125 /* Main.storyboard */; };
 		67BD91BF1C3ED08200637125 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67BD91BE1C3ED08200637125 /* Assets.xcassets */; };
 		67BD91C21C3ED08200637125 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67BD91C01C3ED08200637125 /* LaunchScreen.storyboard */; };
-		67C477A41C40A46B00CF4443 /* AdditionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C477A31C40A46B00CF4443 /* AdditionalViewController.swift */; };
+		7572D6EE21CB560D00A2D920 /* BriefingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572D6ED21CB560D00A2D920 /* BriefingViewController.swift */; };
+		7572D6F021CB577C00A2D920 /* EntertainmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7572D6EF21CB577C00A2D920 /* EntertainmentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4B73BB471E274E6A00513318 /* SlideshowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideshowViewController.swift; sourceTree = "<group>"; };
 		6742D8AC1C4C41A200A689D1 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
-		67BD91B41C3ED08100637125 /* Statusboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Statusboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		67BD91B41C3ED08100637125 /* RiseAndShine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RiseAndShine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BD91B71C3ED08200637125 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		67BD91B91C3ED08200637125 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		67BD91B91C3ED08200637125 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		67BD91BC1C3ED08200637125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		67BD91BE1C3ED08200637125 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67BD91C11C3ED08200637125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67BD91C31C3ED08200637125 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		67C477A31C40A46B00CF4443 /* AdditionalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalViewController.swift; sourceTree = "<group>"; };
+		7572D6ED21CB560D00A2D920 /* BriefingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriefingViewController.swift; sourceTree = "<group>"; };
+		7572D6EF21CB577C00A2D920 /* EntertainmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +44,7 @@
 		67BD91AB1C3ED08100637125 = {
 			isa = PBXGroup;
 			children = (
-				67BD91B61C3ED08100637125 /* Statusboard */,
+				67BD91B61C3ED08100637125 /* RiseAndShine */,
 				67BD91B51C3ED08100637125 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,25 +52,25 @@
 		67BD91B51C3ED08100637125 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				67BD91B41C3ED08100637125 /* Statusboard.app */,
+				67BD91B41C3ED08100637125 /* RiseAndShine.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		67BD91B61C3ED08100637125 /* Statusboard */ = {
+		67BD91B61C3ED08100637125 /* RiseAndShine */ = {
 			isa = PBXGroup;
 			children = (
 				67BD91B71C3ED08200637125 /* AppDelegate.swift */,
-				67BD91B91C3ED08200637125 /* ViewController.swift */,
-				67C477A31C40A46B00CF4443 /* AdditionalViewController.swift */,
-				4B73BB471E274E6A00513318 /* SlideshowViewController.swift */,
+				67BD91B91C3ED08200637125 /* HomeViewController.swift */,
+				7572D6ED21CB560D00A2D920 /* BriefingViewController.swift */,
+				7572D6EF21CB577C00A2D920 /* EntertainmentViewController.swift */,
 				67BD91BB1C3ED08200637125 /* Main.storyboard */,
 				67BD91BE1C3ED08200637125 /* Assets.xcassets */,
 				67BD91C01C3ED08200637125 /* LaunchScreen.storyboard */,
 				67BD91C31C3ED08200637125 /* Info.plist */,
 				67BD91CB1C3ED36300637125 /* Supporting Files */,
 			);
-			path = Statusboard;
+			path = RiseAndShine;
 			sourceTree = "<group>";
 		};
 		67BD91CB1C3ED36300637125 /* Supporting Files */ = {
@@ -84,9 +84,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		67BD91B31C3ED08100637125 /* Statusboard */ = {
+		67BD91B31C3ED08100637125 /* RiseAndShine */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 67BD91C61C3ED08200637125 /* Build configuration list for PBXNativeTarget "Statusboard" */;
+			buildConfigurationList = 67BD91C61C3ED08200637125 /* Build configuration list for PBXNativeTarget "RiseAndShine" */;
 			buildPhases = (
 				67BD91B01C3ED08100637125 /* Sources */,
 				67BD91B11C3ED08100637125 /* Frameworks */,
@@ -96,9 +96,9 @@
 			);
 			dependencies = (
 			);
-			name = Statusboard;
+			name = RiseAndShine;
 			productName = Statusboard;
-			productReference = 67BD91B41C3ED08100637125 /* Statusboard.app */;
+			productReference = 67BD91B41C3ED08100637125 /* RiseAndShine.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,7 +108,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				TargetAttributes = {
 					67BD91B31C3ED08100637125 = {
 						CreatedOnToolsVersion = 7.2;
@@ -117,7 +117,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 67BD91AF1C3ED08100637125 /* Build configuration list for PBXProject "Statusboard" */;
+			buildConfigurationList = 67BD91AF1C3ED08100637125 /* Build configuration list for PBXProject "RiseAndShine" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -130,7 +130,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				67BD91B31C3ED08100637125 /* Statusboard */,
+				67BD91B31C3ED08100637125 /* RiseAndShine */,
 			);
 		};
 /* End PBXProject section */
@@ -153,11 +153,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67C477A41C40A46B00CF4443 /* AdditionalViewController.swift in Sources */,
-				67BD91BA1C3ED08200637125 /* ViewController.swift in Sources */,
+				67BD91BA1C3ED08200637125 /* HomeViewController.swift in Sources */,
 				6742D8AD1C4C41A200A689D1 /* UIImage+Gif.swift in Sources */,
-				4B73BB481E274E6A00513318 /* SlideshowViewController.swift in Sources */,
+				7572D6EE21CB560D00A2D920 /* BriefingViewController.swift in Sources */,
 				67BD91B81C3ED08200637125 /* AppDelegate.swift in Sources */,
+				7572D6F021CB577C00A2D920 /* EntertainmentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,12 +195,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -248,12 +250,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -288,9 +292,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8GEKYYW3CQ;
-				INFOPLIST_FILE = Statusboard/Info.plist;
+				INFOPLIST_FILE = RiseAndShine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = treehacks.com.Statusboard;
+				PRODUCT_BUNDLE_IDENTIFIER = treehacks.com.RiseAndShine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -302,9 +306,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8GEKYYW3CQ;
-				INFOPLIST_FILE = Statusboard/Info.plist;
+				INFOPLIST_FILE = RiseAndShine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = treehacks.com.Statusboard;
+				PRODUCT_BUNDLE_IDENTIFIER = treehacks.com.RiseAndShine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -314,7 +318,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		67BD91AF1C3ED08100637125 /* Build configuration list for PBXProject "Statusboard" */ = {
+		67BD91AF1C3ED08100637125 /* Build configuration list for PBXProject "RiseAndShine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				67BD91C41C3ED08200637125 /* Debug */,
@@ -323,7 +327,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		67BD91C61C3ED08200637125 /* Build configuration list for PBXNativeTarget "Statusboard" */ = {
+		67BD91C61C3ED08200637125 /* Build configuration list for PBXNativeTarget "RiseAndShine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				67BD91C71C3ED08200637125 /* Debug */,
