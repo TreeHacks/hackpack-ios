@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
         setupQuote()
     }
 
-    // Load a GIF of the passed search term by querying the giphy.com API and filling our image view with the content
+    // Load a GIF of the passed search term by querying the giphy.com API and filling our image view
     private func setupGIF(of searchTerm: String) {
         // Construct the URL by inserting our search term (which we edit to have the correct characters for a URL)
         guard let encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
