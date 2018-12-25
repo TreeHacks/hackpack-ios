@@ -75,6 +75,7 @@ private func setupGIF(of searchTerm: String) {
 ```
 
 Now, let's test that the app runs and loads a GIF! You can press the run button (looks like a play button in the top left corner). If everything worked, you should see a random sunshine-themed GIF show up in the simulator (something like this):
+
 ![](https://user-images.githubusercontent.com/20130899/50426258-53a0da80-084f-11e9-800f-d4b5916612c8.png)
 Next, we'll add a quote of the day. 
 
@@ -82,7 +83,7 @@ Next, we'll add a quote of the day.
 
 To add a quote, we're not going to be adding any files but rather just pulling the quote from the [quotes.rest](http://quotes.rest/) API.
 
-To start off, go to `Main.storyboard `and drag in a `UITextView` from the object menu we used previously. Double click to add some placeholder text. If you want, you can also add a title by dragging in a label from the same menu and setting it's text. It should look like this:
+To start off, go to `Main.storyboard `and drag in a `UITextView` from the object menu we used previously. Double click to add some placeholder text. If you want, you can also add a title by dragging in a label from the same menu and setting its text. It should look like this:
 
 ![](https://user-images.githubusercontent.com/20130899/50426291-eccff100-084f-11e9-92dc-7f8b401c3c93.png)
 
@@ -128,10 +129,14 @@ We're going to create two buttons to take us to new screens.
 In `Main.storyboard`, drag in two Buttons from the object menu and place them somewhere near the bottom of the screen. Double click to change the title to “Briefing” and "Entertainment". At this point, your view controller should look similar to this: 
 
 ![](https://user-images.githubusercontent.com/20130899/50426335-03c31300-0851-11e9-8c19-a8c39a8f6545.png)
+
 Next, drag in two View Controllers and place it next our original one:
+
 ![](https://user-images.githubusercontent.com/20130899/50426347-3a009280-0851-11e9-8c91-8b9ef110d06c.png)
 Next, hold control, click on one button, and drag the connector to one of the new view controllers. When a gray prompt comes up, select “push.” You should see a connection between the screens now. Repeat with the other button and the other view controller. 
+
 ![](https://user-images.githubusercontent.com/20130899/50426353-67e5d700-0851-11e9-99a6-5280efd341d3.png)
+
 This connects the button and the next screen together. When the button is tapped, it with “push” the next view controller onto your screen.
 
 Press the run button to check it out! You may notice the blank screen, but that's because we haven't added anything there yet!
