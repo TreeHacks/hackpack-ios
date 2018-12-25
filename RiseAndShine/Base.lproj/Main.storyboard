@@ -176,13 +176,6 @@
                                     <constraint firstItem="jyX-Zc-Jig" firstAttribute="leading" secondItem="UTT-Xi-x1H" secondAttribute="leading" constant="15" id="rwk-5Y-Chd"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pwD-w0-SaF">
-                                <rect key="frame" x="15" y="733" width="345" height="30"/>
-                                <state key="normal" title="Tap me to disappear"/>
-                                <connections>
-                                    <action selector="animateButtonAway:" destination="duP-9R-vSn" eventType="touchUpInside" id="FZG-Ry-i0W"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -190,16 +183,12 @@
                             <constraint firstItem="UTT-Xi-x1H" firstAttribute="leading" secondItem="inT-oG-yJZ" secondAttribute="leadingMargin" id="Qg9-aT-kZW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UTT-Xi-x1H" secondAttribute="trailing" id="Tat-w0-Eqc"/>
                             <constraint firstItem="XxA-MY-BY9" firstAttribute="leading" secondItem="inT-oG-yJZ" secondAttribute="leadingMargin" constant="15" id="U92-zv-kHg"/>
-                            <constraint firstItem="ea5-m9-gZE" firstAttribute="top" secondItem="pwD-w0-SaF" secondAttribute="bottom" constant="15" id="cz6-rS-elr"/>
                             <constraint firstItem="UTT-Xi-x1H" firstAttribute="top" secondItem="XxA-MY-BY9" secondAttribute="bottom" constant="100" id="eel-wd-uEY"/>
-                            <constraint firstAttribute="trailing" secondItem="pwD-w0-SaF" secondAttribute="trailing" constant="15" id="rnT-nY-FAd"/>
-                            <constraint firstItem="pwD-w0-SaF" firstAttribute="leading" secondItem="inT-oG-yJZ" secondAttribute="leading" constant="15" id="sh7-79-KoC"/>
                             <constraint firstItem="XxA-MY-BY9" firstAttribute="top" secondItem="gle-ZH-hKg" secondAttribute="bottom" constant="100" id="t5r-VF-NGy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ENE-cg-X7J"/>
                     <connections>
-                        <outlet property="animatingButton" destination="pwD-w0-SaF" id="7fv-lw-6d2"/>
                         <outlet property="newsButton" destination="zh1-hK-gaJ" id="sQM-0c-h1d"/>
                         <outlet property="weatherTextView" destination="jyX-Zc-Jig" id="8KV-Ar-LMf"/>
                     </connections>

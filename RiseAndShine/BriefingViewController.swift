@@ -13,7 +13,6 @@ class BriefingViewController: UIViewController {
 
     @IBOutlet private weak var weatherTextView: UITextView!
     @IBOutlet private weak var newsButton: UIButton!
-    @IBOutlet private weak var animatingButton: UIButton!
 
     // Access the current location
     private var locationManager = CLLocationManager()
@@ -27,10 +26,6 @@ class BriefingViewController: UIViewController {
         }
     }
 
-    @IBAction private func animateButtonAway(_ sender: Any) {
-        animatingButton.animateOut()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,7 +34,6 @@ class BriefingViewController: UIViewController {
 
         // Load all the components displayed on the screen. Note: don't need to call setupWeather since call is in delegate
         setupNews()
-        animatingButton.animateIn()
     }
 
     // Display a button that links to and displays the title of the top NYTimes article by calling the NYTimes API
@@ -96,22 +90,5 @@ extension BriefingViewController: CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
             setupWeather()
         }
-    }
-}
-
-extension UIButton {
-    func animateIn() {
-        self.alpha = 0.0
-        UIView.animate(withDuration: 0.5, delay: 1.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.curveEaseIn, animations: {
-            [weak self] in
-            self?.alpha = 1.0
-        })
-    }
-
-    func animateOut() {
-        UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.curveEaseIn, animations: {
-            [weak self] in
-            self?.alpha = 0.0
-        })
     }
 }
