@@ -39,9 +39,9 @@ In `viewDidLoad()`, add the following code after super.viewDidLoad(). Feel free 
 ```
 // Set up the navigation controller (the bar at the top) to have a specific color, title, and tint.
 if let navController = self.navigationController {
-navController.navigationBar.barTintColor = UIColor.orange
-navController.navigationBar.tintColor = UIColor.white
-self.title = "Rise & Shine"
+    navController.navigationBar.barTintColor = UIColor.orange
+    navController.navigationBar.tintColor = UIColor.white
+    self.title = "Rise & Shine"
 }
 
 // Set up all the components on the screen
@@ -53,24 +53,24 @@ Underneath the viewDidLoad function, add the following code:
 ```
 // Load a GIF of the passed search term by querying the giphy.com API and filling our image view
 private func setupGIF(of searchTerm: String) {
-// Construct the URL by inserting our search term (which we edit to have the correct characters for a URL)
-guard let encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
-let searchURL = URL(string:"http://api.giphy.com/v1/gifs/translate?s=\(encodedSearchTerm)&api_key=dc6zaTOxFJmzC") else { return }
-let searchData = try? Data(contentsOf: searchURL)
+    // Construct the URL by inserting our search term (which we edit to have the correct characters for a URL)
+    guard let encodedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
+        let searchURL = URL(string:"http://api.giphy.com/v1/gifs/translate?s=\(encodedSearchTerm)&api_key=dc6zaTOxFJmzC") else { return }
+    let searchData = try? Data(contentsOf: searchURL)
 
-// Parse the JSON by accessing multiple levels of dictionaries to get the gif's link
-do {
-if let jsonResult = try JSONSerialization.jsonObject(with: searchData!, options: []) as? [String: Any] {
-guard let images = (jsonResult["data"] as? [String: Any])?["images"] as? [String: Any],
-let link = (images["downsized"] as? [String: String])?["url"],
-let url = URL(string: link),
-let gifData = try? Data(contentsOf: url),
-let gif = UIImage.gifWithData(gifData) else { return }
-self.imageView.image = gif // display the gif we found
-}   
-} catch let error {
-print(error.localizedDescription)
-}
+    // Parse the JSON by accessing multiple levels of dictionaries to get the gif's link
+    do {
+        if let jsonResult = try JSONSerialization.jsonObject(with: searchData!, options: []) as? [String: Any] {
+            guard let images = (jsonResult["data"] as? [String: Any])?["images"] as? [String: Any],
+                let link = (images["downsized"] as? [String: String])?["url"],
+                let url = URL(string: link),
+                let gifData = try? Data(contentsOf: url),
+                let gif = UIImage.gifWithData(gifData) else { return }
+            self.imageView.image = gif // display the gif we found
+        }   
+    } catch let error {
+        print(error.localizedDescription)
+    }
 }
 ```
 
@@ -94,27 +94,27 @@ Next, add `setupQuote()` in `viewDidLoad()` and add the following code block und
 ```
 // Load a quote using the URLSession framework to get data returned from Quotes API
 private func setupQuote() {
-guard let url = URL(string: "http://quotes.rest/qod.json") else { return }
-let session = URLSession.shared
-let task = session.dataTask(with: url, completionHandler: {(data, reponse, error) in
-do {
-// Parse the JSON by accessing multiple levels of dictionaries to get the quote and author
-if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-guard let quotes = (jsonResult["contents"] as? [String: Any])?["quotes"] as? [Any],
-let firstQuote = quotes[0] as? [String: Any],
-let quoteText = firstQuote["quote"] as? String,
-let quoteAuthor = firstQuote["author"] as? String else { return }
+    guard let url = URL(string: "http://quotes.rest/qod.json") else { return }
+    let session = URLSession.shared
+    let task = session.dataTask(with: url, completionHandler: {(data, reponse, error) in
+        do {
+            // Parse the JSON by accessing multiple levels of dictionaries to get the quote and author
+            if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+                guard let quotes = (jsonResult["contents"] as? [String: Any])?["quotes"] as? [Any],
+                    let firstQuote = quotes[0] as? [String: Any],
+                    let quoteText = firstQuote["quote"] as? String,
+                    let quoteAuthor = firstQuote["author"] as? String else { return }
 
-// Change the text view to display quote on the main thread
-DispatchQueue.main.async {
-self.quoteTextView.text = "\(quoteText)\n\n- \(quoteAuthor)"
-}
-}
-} catch let error {
-print(error.localizedDescription)
-}
-})
-task.resume()
+                // Change the text view to display quote on the main thread
+                DispatchQueue.main.async {
+                    self.quoteTextView.text = "\(quoteText)\n\n- \(quoteAuthor)"
+                }
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    })
+    task.resume()
 }
 ```
 The code is pretty similar to adding in the GIF. We're parsing the JSON returned from http://quotes.rest/qod.jsonand setting the `self.quoteTextView.text` to be the text we get.
@@ -174,32 +174,31 @@ And finally add the following function to load the news article:
 ```
 // Display a button that links to and displays the title of the top NYTimes article by calling the NYTimes API
 private func setupNews() {
-guard let url = URL(string: "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=8085826bc22e436aa53e58765b1c38f6") else { return }
-let session = URLSession.shared
-let task = session.dataTask(with: url, completionHandler: {(data, reponse, error) in
-do {
-if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-guard let topArticle = (jsonResult["results"] as? [[String: Any]])?[0],
-let articleTitle = topArticle["title"] as? String,
-let url = topArticle["url"] as? String else { return }
-
-self.articleUrlString = url
-DispatchQueue.main.async {
-self.newsButton.setTitle(articleTitle, for: .normal)
-}
-}
-} catch let error {
-print(error.localizedDescription)
-}
-})
-task.resume()
+    guard let url = URL(string: "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=8085826bc22e436aa53e58765b1c38f6") else { return }
+    let session = URLSession.shared
+    let task = session.dataTask(with: url, completionHandler: {(data, reponse, error) in
+        do {
+            if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+                guard let topArticle = (jsonResult["results"] as? [[String: Any]])?[0],
+                    let articleTitle = topArticle["title"] as? String,
+                    let url = topArticle["url"] as? String else { return }
+                self.articleUrlString = url
+                DispatchQueue.main.async {
+                    self.newsButton.setTitle(articleTitle, for: .normal)
+                }
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    })
+    task.resume()
 }
 
 // Open the url every time the button is tapped
 @IBAction private func buttonTapped(_ sender: UIButton) {
-if let urlString = articleUrlString, let url = URL(string: urlString) {
-UIApplication.shared.openURL(url)
-}
+    if let urlString = articleUrlString, let url = URL(string: urlString) {
+        UIApplication.shared.openURL(url)
+    }
 }
 ```
 
@@ -235,37 +234,37 @@ Underneath your setUpQuote method, add this setUpWeather method:
 ```
 // Display the weather in the user's current location using the CoreLocation framework and the Open Weather Map API
 private func setupWeather() {
-// Only display if we have the current location
-guard let coordinates = locationManager.location?.coordinate,
-let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&units=imperial&APPID=2f6eb7ed8c5576e5d51fe15b51cdea10") else { return }
-let task = URLSession.shared.dataTask(with: url, completionHandler: {(data, reponse, error) in
-do {
-if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-guard let items = jsonResult["main"] as? [String: Any],
-let tempMin = items["temp_min"] as? Double,
-let tempMax = items["temp_max"] as? Double,
-let humidity = items["humidity"] as? Double else { return }
-DispatchQueue.main.async {
-self.weatherTextView.text = "Today's Forecast:\n\nHigh: \(tempMax)°F\nLow: \(tempMin)°F\nHumidity: \(humidity)%"
-}
-}
-} catch let error {
-print(error.localizedDescription)
-}
-})
-task.resume()
+    // Only display if we have the current location
+    guard let coordinates = locationManager.location?.coordinate,
+        let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&units=imperial&APPID=2f6eb7ed8c5576e5d51fe15b51cdea10") else { return }
+    let task = URLSession.shared.dataTask(with: url, completionHandler: {(data, reponse, error) in
+        do {
+            if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+                guard let items = jsonResult["main"] as? [String: Any],
+                    let tempMin = items["temp_min"] as? Double,
+                    let tempMax = items["temp_max"] as? Double,
+                    let humidity = items["humidity"] as? Double else { return }
+                DispatchQueue.main.async {
+                    self.weatherTextView.text = "Today's Forecast:\n\nHigh: \(tempMax)°F\nLow: \(tempMin)°F\nHumidity: \(humidity)%"
+                }
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    })
+    task.resume()
 }
 ```
 
 Finally, at the very bottom of your file, outside the class, add in the extension to support setting the weather when we have the user's location:
 ```
 extension BriefingViewController: CLLocationManagerDelegate {
-func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-if status == .authorizedWhenInUse {
-locationManager.startUpdatingLocation()
-setupWeather()
-}
-}
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+            setupWeather()
+        }
+    }
 }
 ```
 
@@ -283,40 +282,40 @@ Here are the helper methods you'll need:
 // Display a countdown of the number of days until the passed in date
 // Call this function like: setupCountdown(until: "2019-02-18")
 private func setupCountdown(until targetDateString: String) {
-// Set up the format the date should be in
-let dateFormatter = DateFormatter()
-dateFormatter.dateFormat = "yyyy-MM-dd"
-let calendar = Calendar.init(identifier: .gregorian)
+    // Set up the format the date should be in
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    let calendar = Calendar.init(identifier: .gregorian)
 
-// Find the difference between target date and today and display in label
-let targetDate: Date! = dateFormatter.date(from: targetDateString)
-let todayDate: Date! = Date()
-let dateString = DateFormatter.localizedString(from: targetDate, dateStyle: .short, timeStyle: .none)
-if let numDays = calendar.dateComponents([.day], from: todayDate, to: targetDate).day {
-self.countdownLabel.text = "Days until \(dateString): \(numDays)"
-}
+    // Find the difference between target date and today and display in label
+    let targetDate: Date! = dateFormatter.date(from: targetDateString)
+    let todayDate: Date! = Date()
+    let dateString = DateFormatter.localizedString(from: targetDate, dateStyle: .short, timeStyle: .none)
+    if let numDays = calendar.dateComponents([.day], from: todayDate, to: targetDate).day {
+        self.countdownLabel.text = "Days until \(dateString): \(numDays)"
+    }
 }
 
 // Displays the most current xkcd comic in an image view
 private func setupXKCD() {
-guard let url = URL(string: "http://xkcd.com/info.0.json") else { return }
-let session = URLSession.shared
-let task = session.dataTask(with: url, completionHandler: {(data, reponse, error) in
-do {
-if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-guard let imageLink = jsonResult["img"] as? String, let title = jsonResult["title"] as? String,
-let url = URL(string: imageLink), let imageData = try? Data(contentsOf: url) else { return }
-
-DispatchQueue.main.async(execute: {
-self.xkcdTitleLable.text = title;
-self.xkcdImageView.image = UIImage(data: imageData)
-})
-}
-} catch let error {
-print(error.localizedDescription)
-}
-})
-task.resume()
+    guard let url = URL(string: "http://xkcd.com/info.0.json") else { return }
+    let session = URLSession.shared
+    let task = session.dataTask(with: url, completionHandler: {(data, reponse, error) in
+        do {
+            if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+                guard let imageLink = jsonResult["img"] as? String, let title = jsonResult["title"] as? String,
+                let url = URL(string: imageLink), let imageData = try? Data(contentsOf: url) else { return }
+            
+                DispatchQueue.main.async(execute: {
+                    self.xkcdTitleLable.text = title;
+                    self.xkcdImageView.image = UIImage(data: imageData)
+                })
+            }
+        } catch let error {
+            print(error.localizedDescription)
+            }
+        })
+    task.resume()
 }
 ```
 
