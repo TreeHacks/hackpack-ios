@@ -340,5 +340,10 @@ If you want to work on the app a little more, here are some ideas on how to exte
 * anything else you can think of
 
 If you want to learn a bit more about Swift and iOS development, check out some of the details we've added in the project in this repo. See how we made our `Main.storyboard` scalable with [constraints](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/WorkingwithSimpleConstraints.html#//apple_ref/doc/uid/TP40010853-CH12-SW1). Investigate why we changed access control (we made all the UI element variables private!). Dig through [optionals in Swift](https://developer.apple.com/documentation/swift/optional) and why we use guard/if let *everywhere*. 
+
+### About HackPacks 🌲
+
+HackPacks are built by the [TreeHacks](https://treehacks.com) team to help hackers build great projects at our hackathon that happens every February at Stanford. We believe that everyone of every skill level can learn to make awesome things, and this is one way we help facilitate hacker culture. We open source our hackpacks so everyone can learn, regardless of their ability to attend TreeHacks. Feel free to use these at your own hackathons, workshops, and anything else that promotes building :) If you're interested in attending TreeHacks, you can apply on our website during the application period. You can follow us here on [GitHub](https://github.com/treehacks) to see all the open source work we do (we love issues, contributions, and feedback of any kind!), and on [Facebook](https://facebook.com/treehacks), [Twitter](https://twitter.com/hackwithtrees), and [Instagram](https://instagram.com/hackwithtrees) to see general updates from TreeHacks. 
+
 ### License
 MIT
